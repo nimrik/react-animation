@@ -20,19 +20,33 @@ class App extends React.Component {
         })
     }
 
+    createElements(n){
+        let elements = [];
+        for(let i = 0; i <= n; i++){
+            elements.push(
+                <Cart index={i} key={i}/>
+            );
+        }
+        return elements;
+    }
+
     render() {
-      return (
-          <div className="App">
-              <header className="App-header">
+        return (
+            <div className="App">
+                <header className="App-header">
 
-              </header>
+                </header>
 
-              <main className="main">
-                  <Form userMethod={this.getUsers}/>
-                  <Cart data={this.state.data}/>
-              </main>
-          </div>
-      );
+                <main className="main">
+                    {/*<Form userMethod={this.getUsers}/>*/}
+
+                    <ul className="list">
+                        {this.createElements(2)}
+                    </ul>
+
+                </main>
+            </div>
+        );
     }
 }
 
