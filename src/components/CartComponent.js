@@ -9,6 +9,6 @@ const Cart = props => (
         {props.index === 1 && <img src={ocean} alt=""/>}
         {props.index === 2 && <img src={seaRocks} alt=""/>}
     </li>
-)
+);
 
 export default Cart;

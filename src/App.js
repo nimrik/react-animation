@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from './logo.svg';
 import Cart from './components/CartComponent'
 import Form from "./components/FormComponent";
 

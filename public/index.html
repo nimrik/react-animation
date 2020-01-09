@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -29,6 +29,27 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <div id="app">
+      <section class="container">
+        <article class="tile">
+          <figure class="tile__figure">
+            <img
+                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+                    data-hover="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+                    class="tile__image"
+                    alt="My image"
+                    width="400"
+            />
+          </figure>
+        </article>
+      </section>
+
+      <canvas id="stage"></canvas>
+    </div>
+
+    <script src="../src/js/tile.js"></script>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
