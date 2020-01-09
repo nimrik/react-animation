@@ -30,7 +30,7 @@ export default class Figure {
 
         this.createMesh()
 
-        this.callback()
+        // this.callback()
     }
 
     getSizes() {
@@ -79,10 +79,10 @@ export default class Figure {
             y: -(event.clientY / window.innerHeight) * 2 + 1
         })
 
-        TM.to(this.mesh.rotation, 0.5, {
-            x: -this.mouse.y * 0.3,
-            y: this.mouse.x * (Math.PI / 6)
-        })
+        // TM.to(this.mesh.rotation, 0.5, {
+        //     x: -this.mouse.y * 0.3,
+        //     y: this.mouse.x * (Math.PI / 6)
+        // })
     }
 
     update() {

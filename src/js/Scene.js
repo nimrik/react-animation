@@ -30,9 +30,7 @@ export default class Scene {
     }
 
     initCamera() {
-        const fov =
-            (180 * (2 * Math.atan(window.innerHeight / 2 / perspective))) /
-            Math.PI
+        const fov = (180 * (2 * Math.atan(window.innerHeight / 2 / perspective))) / Math.PI
 
         this.camera = new THREE.PerspectiveCamera(
             fov,
