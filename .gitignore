@@ -30,4 +30,4 @@ yarn-error.log*
 /front/package-lock.json
 
 # backend
-#config/
+/config/
