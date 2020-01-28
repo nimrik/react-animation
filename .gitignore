@@ -25,7 +25,7 @@ yarn-error.log*
 
 #front gitignore
 /front/node_modules
-#/front/.idea
+/front/.idea
 /front/public
 /front/package-lock.json
 
