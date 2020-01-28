@@ -24,7 +24,7 @@ exports.getStores = async (req, res, next) => {
 exports.addStore = async (req, res, next) => {
     try {
         const store = await Store.create(req.body);
-
+console.log(req.body, "consoling");
         return res.status(200).json({
            success: true,
            data: store

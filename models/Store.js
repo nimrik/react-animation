@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 
 const StoreSchema = new mongoose.Schema({
-    storeId: {
-        type: String,
-        required: [true, 'Please add a store ID'],
+    id: {
+        type: Number,
+        required: [true, 'Please add an ID'],
         unique: true,
-        trim: true,
-        maxlength: [10, 'Store ID must me less than 10 chars']
     },
+    text: {
+        type: String,
+        required: [true, "Please add a text"],
+        minLength: [3, "Text must contain more than 3 letters"],
+        trim: true
+    }
 });
 
 module.exports = mongoose.model('Store', StoreSchema);

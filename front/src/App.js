@@ -1,7 +1,8 @@
 import React from 'react';
 import Cart from './components/CartComponent'
 import Form from "./components/FormComponent";
-import hoverEffect from 'hover-effect'
+import hoverEffect from 'hover-effect';
+import axios from 'axios'
 // import Scene from './js/Scene'
 
 class App extends React.Component {
@@ -11,14 +12,24 @@ class App extends React.Component {
 
     getStores = async (e) => {
         e.preventDefault();
-        const id = e.target.elements['js-id'].value;
         const api_url = await fetch(`http://localhost:5000/api/v1/stores`);
         const data = await api_url.json();
         this.setState({
             data: JSON.stringify(data)
         });
-        console.log(this.state.data, "data");
+    };
 
+    setStore = async (e) => {
+        e.preventDefault();
+        const id = e.target.elements['js-id'].value;
+        const text = e.target.elements['js-text'].value;
+        const params = {
+            id: id,
+            text: text
+        };
+        axios.post('http://localhost:5000/api/v1/stores', params).then(res => {
+            console.log(res, "res");
+        }).catch(err => console.log(err));
     };
 
     static createElements(n){
@@ -81,7 +92,9 @@ class App extends React.Component {
                         {App.createElements(2)}
                     </ul>
 
-                    <Form userMethod={this.getStores}/>
+                    <Form userMethod={this.setStore}/>
+
+                    <button type="button" onClick={this.getStores}>Get Data</button>
 
                     <p>
                         {this.state.data}

@@ -4,15 +4,15 @@ const Form = props => (
     <form className="form-field" onSubmit={props.userMethod}>
         <div className="form-field">
             <label htmlFor="js-id">input</label>
-            <input type="text" id="js-id" name="textData"/>
+            <input type="text" id="js-id" name="id"/>
         </div>
 
         <div className="form-field">
             <label htmlFor=""></label>
-            <input type="text"/>
+            <input type="text" id="js-text" name="text"/>
         </div>
 
-        <button className="button button--accent-fill">Get data</button>
+        <button className="button button--accent-fill">Set store</button>
     </form>
 );
 
