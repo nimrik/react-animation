@@ -26,7 +26,6 @@ yarn-error.log*
 # front
 /front/node_modules
 /front/.idea
-/front/public
 /front/package-lock.json
 
 # backend
