@@ -6,7 +6,7 @@ import axios from 'axios'
 // import Scene from './js/Scene'
 // import Header from './components/Header'
 import Home from './components/Home'
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 
 class App extends React.Component {
     state = {
@@ -15,7 +15,8 @@ class App extends React.Component {
             {route: 1, name: 'Dinosaurs'},
             {route: 2, name: 'Birds'},
             {route: 3, name: 'Reptiles'},
-        ]
+        ],
+        showForm: false
     };
 
     getStores = async (e) => {
@@ -38,6 +39,10 @@ class App extends React.Component {
         axios.post('http://localhost:5000/api/v1/stores', params).then(res => {
             console.log(res, "res");
         }).catch(err => console.log(err));
+    };
+
+    showForm = () => {
+        this.setState({showForm: true});
     };
 
     static createElements(n){
@@ -93,8 +98,6 @@ class App extends React.Component {
             <div className="App">
                 {/*<Header routes={this.state.routerData}/>*/}
 
-
-
                 <main className="main">
                     <Router>
                         <Switch>
@@ -102,18 +105,18 @@ class App extends React.Component {
                         </Switch>
 
 
-                        <a href="/">Home</a>
+                        <Link to="/">Home</Link>
                         <ul className="list">
                             {App.createElements(this.state.routerData)}
                         </ul>
 
-                        <Form userMethod={this.setStore}/>
+                        <button className="button button--accent-fill button--shadow my-3" onClick={() => this.showForm()}>Add Item</button>
+                        {this.state.showForm && <Form userMethod={this.setStore} getStores={this.getStores}/>}
 
-                        <button type="button" onClick={this.getStores}>Get Data</button>
 
-                        <p>
-                            {this.state.data}
-                        </p>
+                        {/*<p>*/}
+                        {/*    {this.state.data}*/}
+                        {/*</p>*/}
 
                         {/*<img
                             src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
