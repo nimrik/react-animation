@@ -14,19 +14,34 @@
         height: 360px
         overflow: hidden
         border: 1px solid white
-
         transition: all 330ms ease
 
         &:hover
             transform: translate(5px, -5px)
 
-            canvas
-                width: 88% !important
-                height: 92% !important
-
-        canvas
+        a
+            position: relative
             width: 100%
             height: 100%
-            object-fit: cover
-            border-radius: 28px
+            display: block
+
             transition: all 330ms ease
+
+            &:hover
+
+                canvas
+                    top: 4%
+                    left: 6%
+                    width: 88% !important
+                    height: 92% !important
+    
+            canvas
+                position: absolute
+                z-index: 1
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                object-fit: cover
+                border-radius: 28px
+                transition: all 330ms ease

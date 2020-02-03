@@ -4,10 +4,18 @@ import Form from "./components/FormComponent";
 import hoverEffect from 'hover-effect';
 import axios from 'axios'
 // import Scene from './js/Scene'
+// import Header from './components/Header'
+import Home from './components/Home'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 class App extends React.Component {
     state = {
         data: null,
+        routerData: [
+            {route: 1, name: 'Dinosaurs'},
+            {route: 2, name: 'Birds'},
+            {route: 3, name: 'Reptiles'},
+        ]
     };
 
     getStores = async (e) => {
@@ -34,9 +42,10 @@ class App extends React.Component {
 
     static createElements(n){
         let elements = [];
-        for(let i = 0; i <= n; i++){
+        for(let i = 0; i <= n.length-1; i++){
+            console.log(i, "consoling");
             elements.push(
-                <Cart index={i} key={i}/>
+                <Cart index={i} key={i} data={n[i]}/>
             );
         }
         return elements;
@@ -62,7 +71,7 @@ class App extends React.Component {
                 // './static/images/sea-rocks.jpg',
             ]
 
-        document.querySelectorAll('.box-container').forEach((item, index) => {
+        document.querySelectorAll('.box-container a').forEach((item, index) => {
             new hoverEffect({
                 parent: item,
                 intensity: 10,
@@ -82,34 +91,41 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <header className="App-header">
+                {/*<Header routes={this.state.routerData}/>*/}
 
-                </header>
+
 
                 <main className="main">
+                    <Router>
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                        </Switch>
 
-                    <ul className="list">
-                        {App.createElements(2)}
-                    </ul>
 
-                    <Form userMethod={this.setStore}/>
+                        <a href="/">Home</a>
+                        <ul className="list">
+                            {App.createElements(this.state.routerData)}
+                        </ul>
 
-                    <button type="button" onClick={this.getStores}>Get Data</button>
+                        <Form userMethod={this.setStore}/>
 
-                    <p>
-                        {this.state.data}
-                    </p>
+                        <button type="button" onClick={this.getStores}>Get Data</button>
 
-                    {/*<img
-                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-                        data-hover="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-                        className="tile__image"
-                        alt="My image"
-                        width="400"
-                    />
+                        <p>
+                            {this.state.data}
+                        </p>
 
-                    <canvas id="stage"></canvas>*/}
+                        {/*<img
+                            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+                            data-hover="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+                            className="tile__image"
+                            alt="My image"
+                            width="400"
+                        />
 
+                        <canvas id="stage"></canvas>*/}
+
+                    </Router>
 
                 </main>
 
