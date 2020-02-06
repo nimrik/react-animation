@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Link} from "react-router-dom";
 
 class Header extends Component {
-    createRouter = () => {
-        let data = this.props.routes, res = [];
-        for(let i = 0; i <= data.length-1; i++) {
-            res.push(<li><a href={`/${data[i].route}`}>{data[i].name}</a></li>)
-        }
-        return res;
-    };
+
 
     render() {
         return (
-            <nav className="App-header">
-                <ul>{this.createRouter()}</ul>
+            <nav className="header">
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/list">List</Link></li>
+                </ul>
             </nav>
         );
     }

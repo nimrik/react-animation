@@ -1,22 +1,18 @@
 import React from 'react';
-import Cart from './components/CartComponent'
 import Form from "./components/FormComponent";
 import hoverEffect from 'hover-effect';
 import axios from 'axios'
 // import Scene from './js/Scene'
-// import Header from './components/Header'
+import Header from './components/Header'
 import Home from './components/Home'
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import CartItem from "./components/CartItem";
+import ListOfCarts from "./components/ListOfCarts";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 class App extends React.Component {
     state = {
         data: null,
-        routerData: [
-            {route: 1, name: 'Dinosaurs'},
-            {route: 2, name: 'Birds'},
-            {route: 3, name: 'Reptiles'},
-        ],
-        showForm: false
+
     };
 
     getStores = async (e) => {
@@ -41,78 +37,22 @@ class App extends React.Component {
         }).catch(err => console.log(err));
     };
 
-    showForm = () => {
-        this.setState({showForm: true});
-    };
-
-    static createElements(n){
-        let elements = [];
-        for(let i = 0; i <= n.length-1; i++){
-            console.log(i, "consoling");
-            elements.push(
-                <Cart index={i} key={i} data={n[i]}/>
-            );
-        }
-        return elements;
-    }
-
-    static init() {
-        let disortions = [
-            './static/distortions/bubbles.jpg',
-            './static/distortions/ramen.jpg',
-            './static/distortions/stripe1.png',
-            // './static/images/stripe1.png',
-        ],
-            showImages = [
-                './static/images/ocean-calm.jpg',
-                './static/images/IMG_3086.jpg',
-                './static/images/ice2.jpg',
-                // './static/images/ocean-calm.jpg',
-            ],
-            replacement = [
-                './static/images/sea-rocks.jpg',
-                './static/images/IMG_3087.jpg',
-                './static/images/ice.jpg',
-                // './static/images/sea-rocks.jpg',
-            ]
-
-        document.querySelectorAll('.box-container a').forEach((item, index) => {
-            new hoverEffect({
-                parent: item,
-                intensity: 10,
-                image1: showImages[index],
-                image2: replacement[index],
-                displacementImage: disortions[index]
-            });
-        })
-
-    }
-
     componentDidMount() {
-        App.init();
         // window.scene = new Scene();
     }
 
     render() {
         return (
             <div className="App">
-                {/*<Header routes={this.state.routerData}/>*/}
+                <Router>
+                    <Header/>
 
-                <main className="main">
-                    <Router>
+                    <main className="main">
                         <Switch>
                             <Route exact path="/" component={Home} />
+                            <Route exact path="/list" component={ListOfCarts} />
+                            <Route exact path="/:id" component={CartItem} />
                         </Switch>
-
-
-                        <Link to="/">Home</Link>
-                        <ul className="list">
-                            {App.createElements(this.state.routerData)}
-                        </ul>
-
-                        <button className="button button--accent-fill button--shadow my-3" onClick={() => this.showForm()}>Add Item</button>
-                        {this.state.showForm && <Form userMethod={this.setStore} getStores={this.getStores}/>}
-
 
                         {/*<p>*/}
                         {/*    {this.state.data}*/}
@@ -128,10 +68,9 @@ class App extends React.Component {
 
                         <canvas id="stage"></canvas>*/}
 
-                    </Router>
 
-                </main>
-
+                    </main>
+                </Router>
             </div>
         );
     }
