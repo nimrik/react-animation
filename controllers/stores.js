@@ -23,14 +23,15 @@ exports.getStores = async (req, res, next) => {
 // @access Public
 exports.addStore = async (req, res, next) => {
     try {
+        console.log(req.body, "consoling");
         const store = await Store.create(req.body);
-console.log(req.body, "consoling");
+
         return res.status(200).json({
            success: true,
            data: store
         });
     } catch (err) {
-        console.log(err);
+        console.log(err, "error message");
 
         if(err.code === 11000) {
             return res.status(400).json({error: 'This store already exists'});

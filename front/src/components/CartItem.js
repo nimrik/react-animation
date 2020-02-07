@@ -3,13 +3,12 @@ import React, {Component} from 'react';
 class CartItem extends Component {
     state = {
         params: {}
-    }
+    };
 
-    componentDidMount(): void {
-        const {match: {params}} = this.props
-        this.setState({params: params})
-        console.log(params)
-    }
+    componentDidMount() {
+        const {match: {params}} = this.props;
+        this.setState({params: params});
+    };
 
     render() {
         return (

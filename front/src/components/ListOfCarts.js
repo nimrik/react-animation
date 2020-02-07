@@ -59,8 +59,9 @@ class ListOfCarts extends Component {
         this.setState({showForm: !this.state.showForm});
     };
 
-    createElements = (n) => {
+    createElements = () => {
         let elements = [];
+        let n = this.state.routerData;
         for(let i = 0; i <= n.length-1; i++){
             elements.push(
                 <CSSTransition
@@ -71,6 +72,7 @@ class ListOfCarts extends Component {
                     <Cart index={i} data={n[i]}/>
                 </CSSTransition>
             );
+            console.log(n[i], "i");
         }
         return elements;
     };
@@ -79,7 +81,7 @@ class ListOfCarts extends Component {
         return (
             <div>
                 <TransitionGroup className="list" tag="ul">
-                    {this.createElements(this.state.routerData)}
+                    {this.createElements()}
                 </TransitionGroup>
 
                 <button onClick={() => this.addElement({route: 4, name: 'sos'})} type="button" className="button button--shadow button--accent-fill">Add 1 dummy item</button>
