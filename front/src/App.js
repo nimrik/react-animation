@@ -1,53 +1,32 @@
-import React from 'react';
-import Form from "./components/FormComponent";
-import hoverEffect from 'hover-effect';
-import axios from 'axios'
-// import Scene from './js/Scene'
-import Header from './components/Header'
-import Home from './components/Home'
-import CartItem from "./components/CartItem";
-import ListOfCarts from "./components/ListOfCarts";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, { Component } from 'react';
+import Layout from "./components/Layout"
+import {BrowserRouter as Router} from 'react-router-dom'
+import helpers from './js/helpers'
 
-class App extends React.Component {
-    state = {
-        data: null,
+class App extends Component {
+  state = {
+    data: null,
+  };
 
-    };
+  canvasStyle = {
+    width: '100vw',
+    height: '100vh'
+  }
 
-    componentDidMount() {
-        // window.scene = new Scene();
-    }
+  componentDidMount() {
+    helpers.cursor('.button--nav', '.link', 'rgba(255, 0, 0, .5)', 100, 100)
+  }
 
-    render() {
-        return (
-            <div className="App">
-                <Router>
-                    <Header/>
+  render() {
+    return (
+      <Router>
+        <Layout className="App"/>
 
-                    <main className="main">
-                        <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route exact path="/list" component={ListOfCarts} />
-                            <Route exact path="/:id" component={CartItem} />
-                        </Switch>
-
-                        {/*<img
-                            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-                            data-hover="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-                            className="tile__image"
-                            alt="My image"
-                            width="400"
-                        />
-
-                        <canvas id="stage"></canvas>*/}
-
-
-                    </main>
-                </Router>
-            </div>
-        );
-    }
+        <div className="cursor cursor--small" />
+        <canvas className="cursor cursor--canvas" style={this.canvasStyle} />
+      </Router>
+    );
+  }
 }
 
 export default App;

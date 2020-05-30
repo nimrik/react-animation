@@ -1,0 +1,20 @@
+.main, .main a
+  cursor: none
+
+.cursor
+  position: fixed
+  left: 0
+  top: 0
+  pointer-events: none
+
+.cursor--small
+  width: 5px
+  height: 5px
+  left: -2.5px
+  top: -2.5px
+  border-radius: 50%
+  z-index: 11000
+  background: $accent
+
+.cursor--canvas
+  z-index: 12000

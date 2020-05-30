@@ -6,16 +6,38 @@ button
 .button
     transition: all 330ms ease
 
-.button.button--accent-fill
-    border: 1px solid $accent
-    border-radius: 30px
-    padding: 10px 25px
-    background-color: $white
+    &.button--accent-fill
+        border: 1px solid $accent
+        border-radius: 1.875em
+        padding: .625em 1.563em
+        background-color: $white
 
-.button.button--accent-fill:hover
-    background-color: $accent
-    color: $white
+    &.button--accent-fill:hover
+        background-color: $accent
+        color: $white
 
-.button.button--shadow
-    box-shadow: $shadow
+    &.button--shadow
+        box-shadow: $shadow
+
+    &.button--nav
+        padding: .625em
+        position: relative
+        cursor: none
+
+        &::after
+            content: ''
+            position: absolute
+            z-index: 1
+            top: calc(.625em + .188em) // padding top + height of cap height
+            right: 0
+            height: 0
+            width: .188em
+            background: $black
+
+            transition: all 330ms ease
+
+        &:hover::after, &.is-active::after
+            height: calc(100% - (.625em + .188em) * 2)
+
+
 

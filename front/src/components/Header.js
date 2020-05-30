@@ -1,19 +1,17 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 class Header extends Component {
-
-
-    render() {
-        return (
-            <nav className="header">
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/list">List</Link></li>
-                </ul>
-            </nav>
-        );
-    }
+  render() {
+    return (
+      <header className="header">
+        <nav className="nav">
+          <NavLink to="/" exact activeClassName="is-active" className="button button--nav">Home</NavLink>
+          <NavLink to="/list" exact activeClassName="is-active" className="button button--nav">List</NavLink>
+        </nav>
+      </header>
+    );
+  }
 }
 
 export default Header;

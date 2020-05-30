@@ -25,6 +25,7 @@ exports.addStore = async (req, res, next) => {
     try {
         console.log(req.body, "consoling");
         const store = await Store.create(req.body);
+        delete req.body._id;
 
         return res.status(200).json({
            success: true,
